@@ -6,25 +6,24 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AppModule = void 0;
+exports.CategoriasModule = void 0;
 const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
-const jogadores_module_1 = require("./jogadores/jogadores.module");
-const config_1 = require("@nestjs/config");
-const categorias_module_1 = require("./categorias/categorias.module");
-let AppModule = class AppModule {
+const jogadores_module_1 = require("../jogadores/jogadores.module");
+const categorias_controller_1 = require("./categorias.controller");
+const categorias_service_1 = require("./categorias.service");
+const categoria_schema_1 = require("./interfaces/categoria.schema");
+let CategoriasModule = class CategoriasModule {
 };
-AppModule = __decorate([
+CategoriasModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            config_1.ConfigModule.forRoot({ envFilePath: '.env' }),
-            mongoose_1.MongooseModule.forRoot(process.env.DATABASE_URI_CONNECTION),
-            jogadores_module_1.JogadoresModule,
-            categorias_module_1.CategoriasModule
+            mongoose_1.MongooseModule.forFeature([{ name: 'Categoria', schema: categoria_schema_1.CategoriaSchema }]),
+            jogadores_module_1.JogadoresModule
         ],
-        controllers: [],
-        providers: [],
+        controllers: [categorias_controller_1.CategoriasController],
+        providers: [categorias_service_1.CategoriasService]
     })
-], AppModule);
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+], CategoriasModule);
+exports.CategoriasModule = CategoriasModule;
+//# sourceMappingURL=categorias.module.js.map
