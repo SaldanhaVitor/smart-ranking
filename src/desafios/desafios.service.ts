@@ -53,15 +53,15 @@ export class DesafiosService {
             throw new UnprocessableEntityException('Jogador solicitante deve desafiar um jogador da mesma categoria')
         }
 
-        console.log(jogadoresDaPartida)
-
         const desafioCriado: Desafio = new this.desafioModel(criarDesafio)
-        desafioCriado.dataHoraDesafio = criarDesafio.dataHoraDesafio
-        desafioCriado.dataHoraSolicitacao = new Date()
-        desafioCriado.status = DesafioStatusEnum.PENDENTE
-        desafioCriado.solicitante =  idSolicitante,
-        desafioCriado.categoria = categoriaJogadorSolicitante
-        desafioCriado.jogadores = jogadoresDaPartida
+        Object.assign(desafioCriado, {
+            dataHoraDesafio: criarDesafio.dataHoraDesafio,
+            dataHoraSolicitacao: new Date(),
+            status: DesafioStatusEnum.PENDENTE,
+            solicitante: idSolicitante,
+            categoria: categoriaJogadorSolicitante,
+            jogadores: jogadoresDaPartida,
+        })
         return await desafioCriado.save()
     }
 
