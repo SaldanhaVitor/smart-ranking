@@ -48,6 +48,13 @@ let CategoriasService = class CategoriasService {
         }
         return await this.categoriaModel.findOneAndUpdate({ '_id': id }, { $set: atualizarCategoriaDto }, { returnOriginal: false }).exec();
     }
+    async buscarCategoriaPorJogador(idJogador) {
+        return await this.categoriaModel
+            .find()
+            .where('jogadores')
+            .in(idJogador)
+            .exec();
+    }
     async atribuirCategoriaJogador(params) {
         const categoria = params['categoria'];
         const idJogador = params['idJogador'];

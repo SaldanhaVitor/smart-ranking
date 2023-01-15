@@ -12,6 +12,8 @@ const mongoose_1 = require("@nestjs/mongoose");
 const jogadores_module_1 = require("./jogadores/jogadores.module");
 const config_1 = require("@nestjs/config");
 const categorias_module_1 = require("./categorias/categorias.module");
+const desafios_module_1 = require("./desafios/desafios.module");
+const partidas_module_1 = require("./partidas/partidas.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -20,7 +22,9 @@ AppModule = __decorate([
             config_1.ConfigModule.forRoot({ envFilePath: '.env' }),
             mongoose_1.MongooseModule.forRoot(process.env.DATABASE_URI_CONNECTION),
             jogadores_module_1.JogadoresModule,
-            categorias_module_1.CategoriasModule
+            categorias_module_1.CategoriasModule,
+            desafios_module_1.DesafiosModule,
+            partidas_module_1.PartidasModule,
         ],
         controllers: [],
         providers: [],

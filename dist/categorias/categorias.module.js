@@ -22,7 +22,8 @@ CategoriasModule = __decorate([
             jogadores_module_1.JogadoresModule
         ],
         controllers: [categorias_controller_1.CategoriasController],
-        providers: [categorias_service_1.CategoriasService]
+        providers: [categorias_service_1.CategoriasService],
+        exports: [categorias_service_1.CategoriasService]
     })
 ], CategoriasModule);
 exports.CategoriasModule = CategoriasModule;

@@ -11,5 +11,8 @@ export declare class CategoriasService {
     buscarCategorias(): Promise<Categoria[]>;
     buscarCategoriaPorId(id: string): Promise<Categoria>;
     atualizarCategoria(id: string, atualizarCategoriaDto: AtualizarCategoriaDto): Promise<Categoria>;
+    buscarCategoriaPorJogador(idJogador: any): Promise<(Categoria & {
+        _id: import("mongoose").Types.ObjectId;
+    })[]>;
     atribuirCategoriaJogador(params: string[]): Promise<Categoria>;
 }

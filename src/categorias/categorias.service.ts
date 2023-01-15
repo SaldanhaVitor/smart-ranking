@@ -1,6 +1,7 @@
 import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import { Jogador } from 'src/jogadores/interfaces/jogador.interface';
 import { JogadoresService } from 'src/jogadores/jogadores.service';
 import { AtualizarCategoriaDto } from './dtos/atualizar-categoria.dto';
 import { CriarCategoriaDto } from './dtos/criar-categoria.dto';
@@ -50,6 +51,15 @@ export class CategoriasService {
             { $set: atualizarCategoriaDto },
             { returnOriginal: false }
         ).exec()
+    }
+
+    async buscarCategoriaPorJogador(idJogador: any) {
+        return await
+            this.categoriaModel
+                .find()
+                .where('jogadores')
+                .in(idJogador)
+                .exec()
     }
 
     async atribuirCategoriaJogador(params: string[]): Promise<Categoria> {
