@@ -17,7 +17,7 @@ const common_1 = require("@nestjs/common");
 const categorias_service_1 = require("./categorias.service");
 const atualizar_categoria_dto_1 = require("./dtos/atualizar-categoria.dto");
 const criar_categoria_dto_1 = require("./dtos/criar-categoria.dto");
-const categorias_validacao_parametros_pipe_1 = require("./pipes/categorias-validacao-parametros-pipe");
+const validacao_parametros_pipe_1 = require("../common/pipes/validacao-parametros.pipe");
 let CategoriasController = class CategoriasController {
     constructor(categoriaService) {
         this.categoriaService = categoriaService;
@@ -54,7 +54,7 @@ __decorate([
 ], CategoriasController.prototype, "buscarCategorias", null);
 __decorate([
     (0, common_1.Get)('/:id'),
-    __param(0, (0, common_1.Param)('id', categorias_validacao_parametros_pipe_1.CategoriasValidacaoParametrosPipe)),
+    __param(0, (0, common_1.Param)('id', validacao_parametros_pipe_1.ValidacaoParametrosPipe)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
@@ -63,7 +63,7 @@ __decorate([
     (0, common_1.Put)('/:id'),
     (0, common_1.UsePipes)(common_1.ValidationPipe),
     __param(0, (0, common_1.Body)()),
-    __param(1, (0, common_1.Param)('id', categorias_validacao_parametros_pipe_1.CategoriasValidacaoParametrosPipe)),
+    __param(1, (0, common_1.Param)('id', validacao_parametros_pipe_1.ValidacaoParametrosPipe)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [atualizar_categoria_dto_1.AtualizarCategoriaDto, String]),
     __metadata("design:returntype", Promise)

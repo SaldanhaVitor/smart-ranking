@@ -12,6 +12,6 @@ export declare const CategoriaSchema: mongoose.Schema<any, mongoose.Model<any, a
         operacao?: string;
         valor?: number;
     }[];
-    categoria?: string;
     descricao?: string;
+    categoria?: string;
 }>;
